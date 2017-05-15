@@ -613,6 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = collectionApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rymshm.collectionApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -626,6 +627,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = collectionApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rymshm.collectionApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -710,6 +712,7 @@
 				92F8ABB81EC9410E00C85869 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92F8ABB91EC9410E00C85869 /* Build configuration list for PBXNativeTarget "collectionAppTests" */ = {
 			isa = XCConfigurationList;
@@ -718,6 +721,7 @@
 				92F8ABBB1EC9410E00C85869 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92F8ABBC1EC9410E00C85869 /* Build configuration list for PBXNativeTarget "collectionAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -726,6 +730,7 @@
 				92F8ABBE1EC9410E00C85869 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
