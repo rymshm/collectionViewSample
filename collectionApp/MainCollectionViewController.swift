@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Alamofire
+
 private let reuseIdentifier = "reuseIdentifier"
 
 class MainCollectionViewController: UICollectionViewController, UISearchBarDelegate {
@@ -118,7 +120,21 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        self.collectionView?.reloadData()
+        
+        if let term: String = searchBar.text as String!, term != "" {
+            
+            let parameters: Parameters =  [ "q": term, "type": "album", "market": "jp", "limit": 50]
+            
+            Alamofire.request("https://api.spotify.com/v1/search", parameters: parameters).responseJSON(completionHandler: { response in
+                
+                if let jsonData = response.result.value {
+                    print("JSON Data = \(jsonData)")
+                }
+            })
+            
+            self.collectionView?.reloadData()
+        }
+        
         
         
     }
