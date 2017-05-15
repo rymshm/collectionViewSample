@@ -14,7 +14,7 @@ private let reuseIdentifier = "reuseIdentifier"
 
 class MainCollectionViewController: UICollectionViewController, UISearchBarDelegate {
     
-    var data: [AnyHashable: [AnyHashable: Any]]?
+    var data: [Any]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         
-        if let unwarpData = data as [AnyHashable: [AnyHashable: Any]]! {
+        if let unwarpData = data as? [[AnyHashable: Any]] {
             return unwarpData.count
         } else {
             return 0
@@ -117,9 +117,7 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
     
     
     // MARK: SearchBar delegate
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         
         if let term: String = searchBar.text as String!, term != "" {
             
@@ -127,15 +125,15 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
             
             Alamofire.request("https://api.spotify.com/v1/search", parameters: parameters).responseJSON(completionHandler: { response in
                 
-                if let jsonData = response.result.value {
-                    print("JSON Data = \(jsonData)")
+                if let jsonData: [AnyHashable: Any] = response.result.value as? [AnyHashable: Any] {
+                    // parse
+                    if let albums: [AnyHashable: Any] = jsonData["albums"] as? [AnyHashable: Any], let items: [[AnyHashable: Any]] = albums["items"] as? [[AnyHashable: Any]] {
+                        self.data = items
+                        self.collectionView?.reloadData()
+                    }
                 }
             })
-            
-            self.collectionView?.reloadData()
         }
-        
-        
         
     }
     
