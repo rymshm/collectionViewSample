@@ -15,6 +15,8 @@
 		92F8AB9C1EC9410E00C85869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F8AB9A1EC9410E00C85869 /* LaunchScreen.storyboard */; };
 		92F8ABA71EC9410E00C85869 /* collectionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8ABA61EC9410E00C85869 /* collectionAppTests.swift */; };
 		92F8ABB21EC9410E00C85869 /* collectionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8ABB11EC9410E00C85869 /* collectionAppUITests.swift */; };
+		92F8ABC01EC9423F00C85869 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8ABBF1EC9423F00C85869 /* MainCollectionViewController.swift */; };
+		92F8ABC21EC945EC00C85869 /* SearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8ABC11EC945EC00C85869 /* SearchCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		92F8ABAD1EC9410E00C85869 /* collectionAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = collectionAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F8ABB11EC9410E00C85869 /* collectionAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collectionAppUITests.swift; sourceTree = "<group>"; };
 		92F8ABB31EC9410E00C85869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92F8ABBF1EC9423F00C85869 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		92F8ABC11EC945EC00C85869 /* SearchCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +106,12 @@
 				92F8AB8E1EC9410E00C85869 /* AppDelegate.swift */,
 				92F8AB901EC9410E00C85869 /* ViewController.swift */,
 				92F8AB921EC9410E00C85869 /* Main.storyboard */,
+				92F8ABBF1EC9423F00C85869 /* MainCollectionViewController.swift */,
 				92F8AB981EC9410E00C85869 /* Assets.xcassets */,
 				92F8AB9A1EC9410E00C85869 /* LaunchScreen.storyboard */,
 				92F8AB9D1EC9410E00C85869 /* Info.plist */,
 				92F8AB951EC9410E00C85869 /* collectionApp.xcdatamodeld */,
+				92F8ABC11EC945EC00C85869 /* SearchCollectionReusableView.swift */,
 			);
 			path = collectionApp;
 			sourceTree = "<group>";
@@ -263,6 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F8AB971EC9410E00C85869 /* collectionApp.xcdatamodeld in Sources */,
+				92F8ABC21EC945EC00C85869 /* SearchCollectionReusableView.swift in Sources */,
+				92F8ABC01EC9423F00C85869 /* MainCollectionViewController.swift in Sources */,
 				92F8AB911EC9410E00C85869 /* ViewController.swift in Sources */,
 				92F8AB8F1EC9410E00C85869 /* AppDelegate.swift in Sources */,
 			);
