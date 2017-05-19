@@ -64,7 +64,6 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         
@@ -79,13 +78,19 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
         
         // Configure the cell
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath) as? AlbumCollectionViewCell {
-            cell.backgroundColor = UIColor.brown
             
             if let albumInfo = responseData?[indexPath.row] as? [AnyHashable: Any] {
                 
+                // Artwork
                 if let images = albumInfo["images"] as? [Any], let image = images[1] as? [AnyHashable: Any], let imageUrl = image["url"] as? String {
                     cell.artworkImageView.kf.setImage(with: URL(string: imageUrl))
                 }
+                // Album name
+                if let albumName = albumInfo["name"] as? String {
+                    cell.albumNameLabel.text = albumName
+                }
+                
+                
             }
            
             return cell
@@ -94,7 +99,6 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
         return UICollectionViewCell.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
     }
     
-
     // MARK: UICollectionViewDelegate
 
     /*
@@ -126,13 +130,13 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
     }
     */
     
-    
     // MARK: SearchBar delegate
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         if let term: String = searchBar.text as String!, term != "" {
             
-            let parameters: Parameters =  ["q": term, "type": "album", "market": "jp", "limit": 50]
+            let parameters: Parameters =  ["q": term, "type": "album", "market": "jp", "limit": 30]
             
             Alamofire.request("https://api.spotify.com/v1/search", parameters: parameters).responseJSON(completionHandler: { response in
                 
