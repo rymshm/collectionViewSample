@@ -9,6 +9,7 @@
 import UIKit
 
 import Alamofire
+import Kingfisher
 
 private let reuseIdentifier = "reuseIdentifier"
 
@@ -23,9 +24,10 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        let nib: UINib = UINib.init(nibName: "AlbumCollectionViewCell", bundle: nil)
+        collectionView?.register(nib, forCellWithReuseIdentifier: "AlbumCollectionViewCell")
         
-
         // Do any additional setup after loading the view.
     }
 
@@ -75,12 +77,17 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = UIColor.blue
-    
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
         // Configure the cell
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath) as? AlbumCollectionViewCell {
+            cell.backgroundColor = UIColor.brown
+            
+            return cell
+        }
     
-        return cell
+        return UICollectionViewCell.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
     }
     
 
@@ -121,7 +128,7 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
         
         if let term: String = searchBar.text as String!, term != "" {
             
-            let parameters: Parameters =  [ "q": term, "type": "album", "market": "jp", "limit": 50]
+            let parameters: Parameters =  ["q": term, "type": "album", "market": "jp", "limit": 50]
             
             Alamofire.request("https://api.spotify.com/v1/search", parameters: parameters).responseJSON(completionHandler: { response in
                 
