@@ -11,10 +11,13 @@ import UIKit
 class AlbumCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var artworkImageView: UIImageView!
+    @IBOutlet weak var albumNameLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        albumNameLabel.adjustsFontSizeToFitWidth = true
     }
 
 }

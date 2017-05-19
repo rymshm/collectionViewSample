@@ -22,9 +22,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Album name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNE-qR-ev2">
+                        <rect key="frame" x="55" y="121" width="87" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dih-J2-am8">
+                        <rect key="frame" x="0.0" y="109" width="150" height="41"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.13181089743589747" green="0.13181089743589747" blue="0.13181089743589747" alpha="0.29622844827586209" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
             </view>
             <connections>
+                <outlet property="albumNameLabel" destination="lNE-qR-ev2" id="gtM-lM-wcU"/>
                 <outlet property="artworkImageView" destination="cLT-zC-03n" id="heF-fM-rOg"/>
             </connections>
         </collectionViewCell>
