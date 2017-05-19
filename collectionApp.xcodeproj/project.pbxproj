@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0997E904809E1FC3D7084768 /* Pods_collectionAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90AC17D04F499EC36ABF3257 /* Pods_collectionAppTests.framework */; };
 		763B92B6BF98B8FED666D394 /* Pods_collectionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188E5E0711A0F89525C92E3 /* Pods_collectionApp.framework */; };
+		929DACD91ECE794900FFAD2A /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DACD71ECE794900FFAD2A /* AlbumCollectionViewCell.swift */; };
+		929DACDA1ECE794900FFAD2A /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929DACD81ECE794900FFAD2A /* AlbumCollectionViewCell.xib */; };
 		92F8AB8F1EC9410E00C85869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8AB8E1EC9410E00C85869 /* AppDelegate.swift */; };
 		92F8AB911EC9410E00C85869 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8AB901EC9410E00C85869 /* ViewController.swift */; };
 		92F8AB941EC9410E00C85869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F8AB921EC9410E00C85869 /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 		7258F2214D06A71947D5807A /* Pods-collectionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collectionApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-collectionApp/Pods-collectionApp.release.xcconfig"; sourceTree = "<group>"; };
 		7C6F163A3CEADF08E5F473DC /* Pods_collectionAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collectionAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90AC17D04F499EC36ABF3257 /* Pods_collectionAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collectionAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		929DACD71ECE794900FFAD2A /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		929DACD81ECE794900FFAD2A /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		92F8AB8B1EC9410E00C85869 /* collectionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = collectionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F8AB8E1EC9410E00C85869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92F8AB901EC9410E00C85869 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 				92F8AB9D1EC9410E00C85869 /* Info.plist */,
 				92F8AB951EC9410E00C85869 /* collectionApp.xcdatamodeld */,
 				92F8ABC11EC945EC00C85869 /* SearchCollectionReusableView.swift */,
+				929DACD71ECE794900FFAD2A /* AlbumCollectionViewCell.swift */,
+				929DACD81ECE794900FFAD2A /* AlbumCollectionViewCell.xib */,
 			);
 			path = collectionApp;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929DACDA1ECE794900FFAD2A /* AlbumCollectionViewCell.xib in Resources */,
 				92F8AB9C1EC9410E00C85869 /* LaunchScreen.storyboard in Resources */,
 				92F8AB991EC9410E00C85869 /* Assets.xcassets in Resources */,
 				92F8AB941EC9410E00C85869 /* Main.storyboard in Resources */,
@@ -455,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929DACD91ECE794900FFAD2A /* AlbumCollectionViewCell.swift in Sources */,
 				92F8AB971EC9410E00C85869 /* collectionApp.xcdatamodeld in Sources */,
 				92F8ABC21EC945EC00C85869 /* SearchCollectionReusableView.swift in Sources */,
 				92F8ABC01EC9423F00C85869 /* MainCollectionViewController.swift in Sources */,

@@ -8,6 +8,7 @@ target 'collectionApp' do
   # Pods for collectionApp
 
   pod 'Alamofire', '~> 4.4'
+  pod 'Kingfisher'
 
   target 'collectionAppTests' do
     inherit! :search_paths
