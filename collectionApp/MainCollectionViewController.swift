@@ -15,7 +15,7 @@ private let reuseIdentifier = "reuseIdentifier"
 
 class MainCollectionViewController: UICollectionViewController, UISearchBarDelegate {
     
-    var data: [Any]?
+    var responseData: [Any]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,6 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-//        collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         let nib: UINib = UINib.init(nibName: "AlbumCollectionViewCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: "AlbumCollectionViewCell")
         
@@ -69,21 +68,26 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         
-        if let unwarpData = data as? [[AnyHashable: Any]] {
-            return unwarpData.count
+        if let responseData = responseData as? [[AnyHashable: Any]] {
+            return responseData.count
         } else {
             return 0
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
         // Configure the cell
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath) as? AlbumCollectionViewCell {
             cell.backgroundColor = UIColor.brown
             
+            if let albumInfo = responseData?[indexPath.row] as? [AnyHashable: Any] {
+                
+                if let images = albumInfo["images"] as? [Any], let image = images[1] as? [AnyHashable: Any], let imageUrl = image["url"] as? String {
+                    cell.artworkImageView.kf.setImage(with: URL(string: imageUrl))
+                }
+            }
+           
             return cell
         }
     
@@ -135,7 +139,7 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                 if let jsonData: [AnyHashable: Any] = response.result.value as? [AnyHashable: Any] {
                     // parse
                     if let albums: [AnyHashable: Any] = jsonData["albums"] as? [AnyHashable: Any], let items: [[AnyHashable: Any]] = albums["items"] as? [[AnyHashable: Any]] {
-                        self.data = items
+                        self.responseData = items
                         self.collectionView?.reloadData()
                     }
                 }
