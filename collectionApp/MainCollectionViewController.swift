@@ -85,18 +85,37 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                 if let images = albumInfo["images"] as? [Any], let image = images[1] as? [AnyHashable: Any], let imageUrl = image["url"] as? String {
                     cell.artworkImageView.kf.setImage(with: URL(string: imageUrl))
                 }
-                // Album name
-                if let albumName = albumInfo["name"] as? String {
+                // Album info 
+                if let albumName = albumInfo["name"] as? String, let albumId = albumId["id"] as? String {
                     cell.albumNameLabel.text = albumName
+                    cell.albumId = albumId
                 }
-                
-                
             }
            
             return cell
         }
     
         return UICollectionViewCell.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? AlbumCollectionViewCell {
+            
+            // Fetch Tracks
+            if let albumId = cell.albumId {
+                Alamofire.request("https://api.spotify.com/v1/albums/" + albumId).responseJSON(completionHandler: { response in
+                    // get JSON
+                    if let jsonDictionary = response.result.value as? [AnyHashable: Any] {
+                        // parse
+                        if let tracks = jsonDictionary["tracks"] as? [AnyHashable: Any], let items = tracks["items"] as? [Any] {
+                            print(items)
+                        }
+                    }
+                })
+            }
+        }
+        
     }
     
     // MARK: UICollectionViewDelegate
@@ -140,9 +159,9 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
             
             Alamofire.request("https://api.spotify.com/v1/search", parameters: parameters).responseJSON(completionHandler: { response in
                 
-                if let jsonData: [AnyHashable: Any] = response.result.value as? [AnyHashable: Any] {
+                if let jsonData = response.result.value as? [AnyHashable: Any] {
                     // parse
-                    if let albums: [AnyHashable: Any] = jsonData["albums"] as? [AnyHashable: Any], let items: [[AnyHashable: Any]] = albums["items"] as? [[AnyHashable: Any]] {
+                    if let albums = jsonData["albums"] as? [AnyHashable: Any], let items = albums["items"] as? [[AnyHashable: Any]] {
                         self.responseData = items
                         self.collectionView?.reloadData()
                     }
