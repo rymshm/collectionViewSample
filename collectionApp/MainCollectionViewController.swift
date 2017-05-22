@@ -86,7 +86,7 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                     cell.artworkImageView.kf.setImage(with: URL(string: imageUrl))
                 }
                 // Album info 
-                if let albumName = albumInfo["name"] as? String, let albumId = albumId["id"] as? String {
+                if let albumName = albumInfo["name"] as? String, let albumId = albumInfo["id"] as? String {
                     cell.albumNameLabel.text = albumName
                     cell.albumId = albumId
                 }
@@ -109,7 +109,14 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                     if let jsonDictionary = response.result.value as? [AnyHashable: Any] {
                         // parse
                         if let tracks = jsonDictionary["tracks"] as? [AnyHashable: Any], let items = tracks["items"] as? [Any] {
-                            print(items)
+                            
+                            var trackList = [String]()
+                            
+                            for track in items {
+                                if let track = track as? [AnyHashable: Any], let previewUrl = track["preview_url"] as? String {
+                                    trackList.append(previewUrl)
+                                }
+                            }
                         }
                     }
                 })
