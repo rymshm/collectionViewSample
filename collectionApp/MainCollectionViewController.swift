@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 import Alamofire
 import Kingfisher
@@ -16,6 +17,8 @@ private let reuseIdentifier = "reuseIdentifier"
 class MainCollectionViewController: UICollectionViewController, UISearchBarDelegate {
     
     var responseData: [Any]?
+    
+    var player: AVQueuePlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,12 +113,21 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                         // parse
                         if let tracks = jsonDictionary["tracks"] as? [AnyHashable: Any], let items = tracks["items"] as? [Any] {
                             
-                            var trackList = [String]()
+                            var trackList = [AVPlayerItem]()
                             
                             for track in items {
-                                if let track = track as? [AnyHashable: Any], let previewUrl = track["preview_url"] as? String {
-                                    trackList.append(previewUrl)
+                                if let track = track as? [AnyHashable: Any], let previewUrl = track["preview_url"] as? URL {
+                                    
+                                    let trackAsset = AVURLAsset.init(url: previewUrl)
+                                    let playerItem = AVPlayerItem.init(asset: trackAsset)
+                                    
+                                    trackList.append(playerItem)
                                 }
+                            }
+                            
+                            self.player = AVQueuePlayer.init(items: trackList)
+                            if let player = self.player {
+                                player.play()
                             }
                         }
                     }
