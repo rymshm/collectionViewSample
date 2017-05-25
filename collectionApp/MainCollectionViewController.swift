@@ -117,14 +117,12 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                             
                             for track in items {
                                 if let track = track as? [AnyHashable: Any], let previewUrl = track["preview_url"] as? URL {
-                                    
-                                    let trackAsset = AVURLAsset.init(url: previewUrl)
-                                    let playerItem = AVPlayerItem.init(asset: trackAsset)
-                                    
+                                    let playerItem = AVPlayerItem.init(url: previewUrl)
                                     trackList.append(playerItem)
                                 }
                             }
                             
+                            // Play
                             self.player = AVQueuePlayer.init(items: trackList)
                             if let player = self.player {
                                 player.play()
@@ -187,7 +185,6 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                 }
             })
         }
-        
     }
     
 
