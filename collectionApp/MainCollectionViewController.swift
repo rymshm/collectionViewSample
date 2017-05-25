@@ -116,8 +116,8 @@ class MainCollectionViewController: UICollectionViewController, UISearchBarDeleg
                             var trackList = [AVPlayerItem]()
                             
                             for track in items {
-                                if let track = track as? [AnyHashable: Any], let previewUrl = track["preview_url"] as? URL {
-                                    let playerItem = AVPlayerItem.init(url: previewUrl)
+                                if let track = track as? [AnyHashable: Any], let previewUrl = track["preview_url"] as? String, let url = URL.init(string: previewUrl) {
+                                    let playerItem = AVPlayerItem.init(url: url)
                                     trackList.append(playerItem)
                                 }
                             }
